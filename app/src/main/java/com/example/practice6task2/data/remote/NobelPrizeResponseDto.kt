@@ -1,53 +1,29 @@
 package com.example.practice6task2.data.remote
 
-import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class NobelPrizeResponseDto(
-    val nobelPrizes: List<NobelPrizeDto> = emptyList()
+data class PrizeResponseDto(
+    val year: Int,
+    val category: String,
+    val laureates: List<LaureateResponseDto> = emptyList()
 )
 
 @Serializable
-data class NobelPrizeDto(
-    val awardYear: String = "",
-    val category: TranslatedTextDto? = null,
-    val laureates: List<LaureateDto> = emptyList()
+data class LaureateResponseDto(
+    val id: Int,
+    val fullName: String,
+    val portion: String? = null,
+    val motivation: String,
+    val portraitUrl: String? = null
 )
 
 @Serializable
-data class LaureateDto(
-    val id: String = "",
-    val knownName: TranslatedTextDto? = null,
-    val fullName: TranslatedTextDto? = null,
-    val motivation: TranslatedTextDto? = null,
-    val birth: BirthDto? = null,
-
-    @SerialName("wikipedia")
-    val wikipedia: WikipediaDto? = null
-)
-
-@Serializable
-data class TranslatedTextDto(
-    val en: String? = null,
-    val se: String? = null,
-    val no: String? = null
-)
-
-@Serializable
-data class BirthDto(
-    val place: BirthPlaceDto? = null
-)
-
-@Serializable
-data class BirthPlaceDto(
-    val city: TranslatedTextDto? = null,
-    val country: TranslatedTextDto? = null,
-    val cityNow: TranslatedTextDto? = null,
-    val countryNow: TranslatedTextDto? = null
-)
-
-@Serializable
-data class WikipediaDto(
-    val english: String? = null
+data class FavoritePrizeResponseDto(
+    val id: Int,
+    val year: Int,
+    val category: String,
+    val fullName: String,
+    val motivation: String,
+    val detailLink: String? = null
 )

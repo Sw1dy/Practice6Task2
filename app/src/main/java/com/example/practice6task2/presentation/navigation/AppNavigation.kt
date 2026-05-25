@@ -5,6 +5,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.practice6task2.presentation.detail.LaureateDetailScreen
+import com.example.practice6task2.presentation.login.LoginScreen
 import com.example.practice6task2.presentation.prizes.NobelPrizesScreen
 
 @Composable
@@ -13,8 +14,20 @@ fun AppNavigation() {
 
     NavHost(
         navController = navController,
-        startDestination = Routes.PRIZES_LIST
+        startDestination = Routes.LOGIN
     ) {
+        composable(Routes.LOGIN) {
+            LoginScreen(
+                onLoginSuccess = {
+                    navController.navigate(Routes.PRIZES_LIST) {
+                        popUpTo(Routes.LOGIN) {
+                            inclusive = true
+                        }
+                    }
+                }
+            )
+        }
+
         composable(Routes.PRIZES_LIST) {
             NobelPrizesScreen(
                 onLaureateClick = { prize, laureate ->

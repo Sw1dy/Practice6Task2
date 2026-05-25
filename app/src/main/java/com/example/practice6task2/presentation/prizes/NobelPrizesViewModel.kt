@@ -1,6 +1,7 @@
 package com.example.practice6task2.presentation.prizes
 
-import androidx.lifecycle.ViewModel
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.practice6task2.di.AppModule
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -8,9 +9,12 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-class NobelPrizesViewModel : ViewModel() {
+class NobelPrizesViewModel(
+    application: Application
+) : AndroidViewModel(application) {
 
-    private val getNobelPrizesUseCase = AppModule.getNobelPrizesUseCase
+    private val getNobelPrizesUseCase =
+        AppModule.provideGetNobelPrizesUseCase(application)
 
     private val _uiState = MutableStateFlow<NobelPrizesUiState>(NobelPrizesUiState.Loading)
     val uiState: StateFlow<NobelPrizesUiState> = _uiState.asStateFlow()

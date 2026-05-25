@@ -3,25 +3,23 @@ package com.example.practice6task2.data.remote
 import com.example.practice6task2.domain.model.Laureate
 import com.example.practice6task2.domain.model.NobelPrize
 
-fun NobelPrizeDto.toDomain(): NobelPrize {
+fun PrizeResponseDto.toDomain(): NobelPrize {
     return NobelPrize(
-        awardYear = awardYear,
-        category = category?.en.orEmpty(),
+        id = "${year}_${category}",
+        awardYear = year.toString(),
+        category = category,
         laureates = laureates.map { it.toDomain() }
     )
 }
 
-fun LaureateDto.toDomain(): Laureate {
+fun LaureateResponseDto.toDomain(): Laureate {
     return Laureate(
-        id = id,
-        fullName = fullName?.en
-            ?: knownName?.en
-            ?: "Unknown laureate",
-        motivation = motivation?.en ?: "No motivation provided",
-        birthCountry = birth?.place?.countryNow?.en
-            ?: birth?.place?.country?.en,
-        birthPlace = birth?.place?.cityNow?.en
-            ?: birth?.place?.city?.en,
-        portraitUrl = null
+        id = id.toString(),
+        fullName = fullName,
+        motivation = motivation,
+        birthCountry = null,
+        birthPlace = null,
+        portraitUrl = portraitUrl,
+        portion = portion
     )
 }

@@ -57,4 +57,22 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
+
+    // Ktor Client
+    implementation("io.ktor:ktor-client-core:3.1.0")
+    implementation("io.ktor:ktor-client-android:3.1.0")
+    implementation("io.ktor:ktor-client-content-negotiation:3.1.0")
+    implementation("io.ktor:ktor-serialization-kotlinx-json:3.1.0")
+    implementation("io.ktor:ktor-client-logging:3.1.0")
+
+    // Navigation Compose
+    implementation("androidx.navigation:navigation-compose:2.8.9")
+
+    // Lifecycle ViewModel Compose
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.7")
+
+    // Coil
+    implementation("io.coil-kt:coil-compose:2.7.0")
+
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
 }
